@@ -4,18 +4,11 @@ services:
     build: ./
     ports:
       - '8080:8080'
-    links:
-      - redis
     environment:
       PORT: 8080
       MOTORHEAD_MAX_WINDOW_SIZE: 25
       MOTORHEAD_LONG_TERM_MEMORY: 'true'
       MOTORHEAD_MODEL: 'gpt-3.5-turbo'
-      REDIS_URL: 'redis://redis:6379'
-    env_file:
-      - .env
+      REDIS_URL: 'redis://:UhBlcOXVGx1v8j06tk4c2GVmod4V6KkHdmtDdvxdf4M0LRSuyxBLQZObHXERCZgC@bs44s8w:6379/0'
+      OPENAI_API_KEY: $OPENAI_API_KEY_MOTORHEAD
 
-  redis:
-    image: redis/redis-stack-server:latest
-    ports:
-      - '6379:6379'
