@@ -42,6 +42,7 @@ pub fn ensure_redisearch_index(
                 .arg(distance_metric)
                 .query(&mut con)?;
         } else {
+            eprintln!("Attempting to connect to Redis with URL: {}", redis.get_connection_info().addr);
             return Err(err);
         }
     }
