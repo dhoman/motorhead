@@ -8,6 +8,8 @@ pub fn ensure_redisearch_index(
     let mut con = redis.get_connection()?;
     let index_name = "motorhead";
 
+    let modules = redis::cmd("MODULE").arg("LIST").query(&mut con)?;
+    println!("Modules loaded: {:?}", modules);
     let index_info: Result<redis::Value, _> = redis::cmd("FT.INFO").arg(index_name).query(&mut con);
 
     if let Err(err) = index_info {
