@@ -3,9 +3,9 @@ services:
   motorhead:
     build: ./
     ports:
-      - '8080:8080'
+      - '8081:8081'
     environment:
-      PORT: 8080
+      PORT: 8081
       MOTORHEAD_MAX_WINDOW_SIZE: 25
       MOTORHEAD_LONG_TERM_MEMORY: 'true'
       MOTORHEAD_MODEL: 'gpt-3.5-turbo'
