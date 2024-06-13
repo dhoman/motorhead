@@ -28,9 +28,6 @@ FROM debian:bullseye
 
 RUN apt-get update && apt install -y openssl ca-certificates curl
 
-RUN echo "REDIS_URL ${REDIS_URL}"
-RUN echo "OPENAI_API_KEY_MOTORHEAD ${OPENAI_API_KEY_MOTORHEAD}"
-
 COPY --from=build /motorhead/target/release/motorhead .
 
 CMD ["./motorhead"]
