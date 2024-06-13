@@ -8,8 +8,6 @@ RUN apt-get update -y && \
 RUN USER=root cargo new --bin motorhead
 WORKDIR /motorhead
 
-#RUN echo "REDIS_URL=$REDIS_URL"
-#RUN echo "OPENAI_API_KEY=$OPENAI_API_KEY"
 
 COPY ./Cargo.lock ./Cargo.lock
 COPY ./Cargo.toml ./Cargo.toml
@@ -28,7 +26,7 @@ RUN cargo build --release
 
 FROM debian:bullseye
 
-RUN apt-get update && apt install -y openssl ca-certificates
+RUN apt-get update && apt install -y openssl ca-certificates curl
 
 COPY --from=build /motorhead/target/release/motorhead .
 
